@@ -5,11 +5,11 @@ export class Money {
     this.amount = amount;
     this._currency = currency;
   }
-  static dollar(amount: number): Dollar {
-    return new Dollar(amount, 'USD');
+  static dollar(amount: number): Money {
+    return new Money(amount, 'USD');
   }
   static euro(amount: number): Money {
-    return new Euro(amount, 'EUR');
+    return new Money(amount, 'EUR');
   }
   equals(other: Money) {
     if (this._currency !== other._currency) {
@@ -24,7 +24,3 @@ export class Money {
     return this._currency;
   }
 }
-
-export class Dollar extends Money {}
-
-export class Euro extends Money {}
