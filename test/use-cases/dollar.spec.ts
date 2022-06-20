@@ -1,7 +1,7 @@
 import { Dollar } from '@/use-cases';
 
 describe('Dollar', () => {
-  it('Should return 10 when five dollars are multiplied by two', () => {
+  it('Should return 10 when five dollars are multiplied by two and 15 when miltiplier by three', () => {
     const five = new Dollar(5);
     expect(five.times(2).equals(new Dollar(10))).toBeTruthy();
     expect(five.times(3).equals(new Dollar(15))).toBeTruthy();
