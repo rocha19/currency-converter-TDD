@@ -8,4 +8,8 @@ describe('Dollar', () => {
     product = five.times(3);
     expect(product.amount).toEqual(15);
   });
+  it('should return thre when dollars of the same value are compared', () => {
+    expect(new Dollar(5).equals(new Dollar(5))).toBeTruthy();
+    expect(new Dollar(5).equals(new Dollar(6))).toBeFalsy();
+  });
 });
