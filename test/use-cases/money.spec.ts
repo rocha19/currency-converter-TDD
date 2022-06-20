@@ -18,4 +18,8 @@ describe('Money', () => {
     expect(Money.euro(5).equals(Money.euro(6))).toBeFalsy();
     expect(Money.euro(5).equals(Money.dollar(5))).toBeFalsy();
   });
+  it('should correctly handle currencies', () => {
+    expect(Money.dollar(1).currency()).toEqual('USD');
+    expect(Money.euro(1).currency()).toEqual('EUR');
+  });
 });
