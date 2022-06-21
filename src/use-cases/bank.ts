@@ -1,8 +1,8 @@
-import { Expression } from './expressiton';
-import { Money } from './money';
+import { Expression } from './expressiton'
+import { Money } from './money'
 
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    return Money.dollar(10);
+    return source.reduce(to)
   }
 }

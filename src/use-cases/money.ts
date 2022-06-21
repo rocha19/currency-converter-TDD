@@ -1,31 +1,39 @@
-import { Expression } from './expressiton';
+import { Expression } from './expressiton'
+import { Sum } from './sum'
 
 export class Money implements Expression {
-  private readonly amount: number;
-  private readonly _currency: string;
+  private readonly _amount: number
+  private readonly _currency: string
   constructor(amount: number, currency: string) {
-    this.amount = amount;
-    this._currency = currency;
+    this._amount = amount
+    this._currency = currency
   }
   static dollar(amount: number): Money {
-    return new Money(amount, 'USD');
+    return new Money(amount, 'USD')
   }
   static euro(amount: number): Money {
-    return new Money(amount, 'EUR');
+    return new Money(amount, 'EUR')
   }
   equals(other: Money) {
     if (this._currency !== other._currency) {
-      return false;
+      return false
     }
-    return this.amount === other.amount;
+    return this.amount === other.amount
   }
   times(multiplier: number): Money {
-    return new Money(this.amount * multiplier, this._currency);
+    return new Money(this._amount * multiplier, this._currency)
   }
   plus(addend: Money): Expression {
-    return new Money(this.amount + addend.amount, this._currency);
+    return new Sum(this, addend)
+  }
+  reduce(to: string): Money {
+    return this
   }
   currency(): string {
-    return this._currency;
+    return this._currency
+  }
+
+  amount(): number {
+    return this._amount
   }
 }
