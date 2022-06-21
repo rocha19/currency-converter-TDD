@@ -1,3 +1,4 @@
+import { Bank } from './bank'
 import { Expression } from './expressiton'
 import { Sum } from './sum'
 
@@ -26,8 +27,9 @@ export class Money implements Expression {
   plus(addend: Money): Expression {
     return new Sum(this, addend)
   }
-  reduce(to: string): Money {
-    return this
+  reduce(bank: Bank, to: string): Money {
+    const rate = bank.rate(this._currency, to)
+    return new Money(this._amount / rate, to)
   }
   currency(): string {
     return this._currency
