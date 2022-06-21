@@ -15,12 +15,6 @@ export class Money implements Expression {
   static euro(amount: number): Money {
     return new Money(amount, 'EUR')
   }
-  equals(other: Money) {
-    if (this._currency !== other._currency) {
-      return false
-    }
-    return this.amount === other.amount
-  }
   times(multiplier: number): Expression {
     return new Money(this._amount * multiplier, this._currency)
   }
